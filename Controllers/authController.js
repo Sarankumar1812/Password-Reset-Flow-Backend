@@ -69,7 +69,7 @@ export const forgotPassword = async (req, res) => {
       from: process.env.PASS_MAIL,
       to: user.email,
       subject: "Password Reset Request",
-      text: `Hello ${user.name},
+      text: `Hello,
     
     We received a request to reset the password for your account. To proceed with resetting your password, please click the link below or copy and paste it into your browser:
     
