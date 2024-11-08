@@ -68,10 +68,19 @@ export const forgotPassword = async (req, res) => {
     const mailOptions = {
       from: process.env.PASS_MAIL,
       to: user.email,
-      subject: "Password Reset Link",
-      text: `You are receiving this because you have requested the reset of the password for your account 
-      Please click the following link or paste it into your browser to complete the process
-      https://fsd-auth-frontend.vercel.app/reset-password/${user._id}/${token}`,
+      subject: "Password Reset Request",
+      text: `Hello ${user.name},
+    
+    We received a request to reset the password for your account. To proceed with resetting your password, please click the link below or copy and paste it into your browser:
+    
+    https://fsd-auth-frontend.vercel.app/reset-password/${user._id}/${token}
+    
+    For your security, this link will expire in 1 hour.
+    
+    If you did not request this password reset, please ignore this email or contact support if you have any concerns.
+    
+    Best regards,  
+    Support Team`,
     };
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
